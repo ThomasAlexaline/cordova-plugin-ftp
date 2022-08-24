@@ -199,6 +199,7 @@ public class CDVFtp extends CordovaPlugin {
             Log.i(TAG, "connect: No need to connect as already connected to address=" + address);
             return OK;
         }
+        Log.d(TAG, "connect test passed");
         if (address == null || address.length() == 0) {
             throw new CDVFtpException("Expected one non-empty arg hostname!");
         }
@@ -206,6 +207,7 @@ public class CDVFtp extends CordovaPlugin {
             username = ANONY_USERNAME;
             password = ANONY_PASSWORD;
         }
+        Log.d(TAG, "before client.connect");
         String[] addressSplit = address.split(":");
         if (addressSplit.length == 2) {
             String host = addressSplit[0];
@@ -214,6 +216,7 @@ public class CDVFtp extends CordovaPlugin {
         } else {
             client.connect(address);
         }
+        Log.d(TAG, "after client.connect");
         client.login(username, password);
         Log.i(TAG, "connect: Succeed to connect and login: " + address);
         this.address = address;
